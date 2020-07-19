@@ -63,7 +63,7 @@ for iMC = 1:nMC
                 adhere_1 = adhere;
                 
             else
-                SMBG(k) = NaN;  %fsolve(@(x) cost(x,theta'*[u_last;1]),7);
+                SMBG(k) = NaN; 
                 u(k) = u(k-1);
                 u_in = 0;
                 adhere_1 = adhere;
@@ -188,9 +188,6 @@ stats2.TAR2 = numel(iTAR2)/n2*100;
 stats2.TIR2 = numel(iTIR2)/n2*100;
 
 %% Functions 
-function res = cost(x,Jhat)
-res = -Jhat + (x-5)^2 + 8*(min(0,x-5))^2;
-end
 
 function [u,theta,P,gradient] = dose_guidance(u,SMBG,day,theta,P,lambda,adhere)
 delta = 0.5*24;
