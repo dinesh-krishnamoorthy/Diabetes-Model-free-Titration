@@ -36,7 +36,7 @@ for sim_k = 1:1*90*24
     
     if  rem(sim_k,24)==0
         k = k+1;
-        adhere =round(0.35 + 0.65*rand);
+        adhere =round(0.35 + 0.65*rand); % non-adherence to treatment regimen
        
         if adhere
             % Read SMBG data
@@ -55,7 +55,7 @@ for sim_k = 1:1*90*24
             adhere_1 = adhere;
            
         else
-            SMBG(k) = NaN;  %fsolve(@(x) cost(x,theta'*[u_last;1]),7);
+            SMBG(k) = NaN;  
             u(k) = u(k-1);
             u_in = 0;
             adhere_1 = adhere;
@@ -116,10 +116,7 @@ glyc_var = sum((SMBG-5).^2 + 8.*(min(0,SMBG-5)).^2);
 avg_gl = mean(SMBG)
 avg_30 = [mean(SMBG(1:30));mean(SMBG(31:end))];
 
-
-function res = cost(x,Jhat)
-res = -Jhat + (x-5)^2 + 8*(min(0,x-5))^2;
-end
+%% ----------------- Functions --------------------
 
 function [u,theta,P,gradient] = dose_guidance(u,SMBG,day,theta,P,lambda,adhere)
 delta = 0.5*24;
