@@ -7,5 +7,5 @@ This paper presents a model-free insulin titration algorithm for patients with t
 
 This is a joint work with the Technical University of Denmark (DTU Compute) and Novo Nordisk. 
 
-![T2D](T2D.png "T2D")
+![T2D](T2D/T2D.png "T2D")
 
